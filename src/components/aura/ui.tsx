@@ -66,7 +66,7 @@ export function Stars({ rating, className }: { rating: number; className?: strin
   );
 }
 
-export function SectionHead({ eyebrow, title, sub, className, light }: { eyebrow?: string; title: ReactNode; sub?: string; className?: string; light?: boolean }) {
+export function SectionHead({ eyebrow, title, sub, className, light }: { eyebrow?: string; title: ReactNode; sub?: string | undefined; className?: string; light?: boolean }) {
   return (
     <Reveal className={cn("max-w-3xl", className)}>
       {eyebrow && <p className={cn("label-tech mb-5", light ? "text-cyan" : "text-primary")}>{eyebrow}</p>}

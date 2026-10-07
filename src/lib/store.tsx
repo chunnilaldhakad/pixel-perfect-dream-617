@@ -48,7 +48,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const addToCart = (id: string, color?: string, size?: string) => {
     const prod = getProduct(id);
     if (!prod) return;
-    const c = color ?? prod.colors[0].name;
+    const c = color ?? prod.colors[0]?.name ?? "";
     const s = size ?? prod.size;
     setCart((prev) => {
       const i = prev.findIndex((x) => x.id === id && x.color === c && x.size === s);
