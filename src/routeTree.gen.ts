@@ -11,6 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ComputerGlassesRouteImport } from './routes/computer-glasses'
+import { Route as EyeglassesRouteImport } from './routes/eyeglasses'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as SmartGlassesRouteImport } from './routes/smart-glasses'
+import { Route as SunglassesRouteImport } from './routes/sunglasses'
+import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
@@ -23,6 +31,46 @@ const IndexRoute = IndexRouteImport.update({
 const AccountRoute = AccountRouteImport.update({
   id: '/account',
   path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComputerGlassesRoute = ComputerGlassesRouteImport.update({
+  id: '/computer-glasses',
+  path: '/computer-glasses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EyeglassesRoute = EyeglassesRouteImport.update({
+  id: '/eyeglasses',
+  path: '/eyeglasses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SmartGlassesRoute = SmartGlassesRouteImport.update({
+  id: '/smart-glasses',
+  path: '/smart-glasses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SunglassesRoute = SunglassesRouteImport.update({
+  id: '/sunglasses',
+  path: '/sunglasses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WishlistRoute = WishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
@@ -44,6 +92,14 @@ const ProductIdRoute = ProductIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/computer-glasses': typeof ComputerGlassesRoute
+  '/eyeglasses': typeof EyeglassesRoute
+  '/search': typeof SearchRoute
+  '/smart-glasses': typeof SmartGlassesRoute
+  '/sunglasses': typeof SunglassesRoute
+  '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -51,6 +107,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/computer-glasses': typeof ComputerGlassesRoute
+  '/eyeglasses': typeof EyeglassesRoute
+  '/search': typeof SearchRoute
+  '/smart-glasses': typeof SmartGlassesRoute
+  '/sunglasses': typeof SunglassesRoute
+  '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
   '/collections': typeof CollectionsIndexRoute
@@ -59,6 +123,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/computer-glasses': typeof ComputerGlassesRoute
+  '/eyeglasses': typeof EyeglassesRoute
+  '/search': typeof SearchRoute
+  '/smart-glasses': typeof SmartGlassesRoute
+  '/sunglasses': typeof SunglassesRoute
+  '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
   '/collections/': typeof CollectionsIndexRoute
@@ -66,13 +138,46 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/account' | '/collections/$slug' | '/product/$id' | '/collections/'
+    | '/'
+    | '/account'
+    | '/cart'
+    | '/checkout'
+    | '/computer-glasses'
+    | '/eyeglasses'
+    | '/search'
+    | '/smart-glasses'
+    | '/sunglasses'
+    | '/wishlist'
+    | '/collections/$slug'
+    | '/product/$id'
+    | '/collections/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/account' | '/collections/$slug' | '/product/$id' | '/collections'
+  to:
+    | '/'
+    | '/account'
+    | '/cart'
+    | '/checkout'
+    | '/computer-glasses'
+    | '/eyeglasses'
+    | '/search'
+    | '/smart-glasses'
+    | '/sunglasses'
+    | '/wishlist'
+    | '/collections/$slug'
+    | '/product/$id'
+    | '/collections'
   id:
     | '__root__'
     | '/'
     | '/account'
+    | '/cart'
+    | '/checkout'
+    | '/computer-glasses'
+    | '/eyeglasses'
+    | '/search'
+    | '/smart-glasses'
+    | '/sunglasses'
+    | '/wishlist'
     | '/collections/$slug'
     | '/product/$id'
     | '/collections/'
@@ -81,6 +186,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ComputerGlassesRoute: typeof ComputerGlassesRoute
+  EyeglassesRoute: typeof EyeglassesRoute
+  SearchRoute: typeof SearchRoute
+  SmartGlassesRoute: typeof SmartGlassesRoute
+  SunglassesRoute: typeof SunglassesRoute
+  WishlistRoute: typeof WishlistRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   ProductIdRoute: typeof ProductIdRoute
   CollectionsIndexRoute: typeof CollectionsIndexRoute
@@ -100,6 +213,62 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/account'
       preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/computer-glasses': {
+      id: '/computer-glasses'
+      path: '/computer-glasses'
+      fullPath: '/computer-glasses'
+      preLoaderRoute: typeof ComputerGlassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eyeglasses': {
+      id: '/eyeglasses'
+      path: '/eyeglasses'
+      fullPath: '/eyeglasses'
+      preLoaderRoute: typeof EyeglassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/smart-glasses': {
+      id: '/smart-glasses'
+      path: '/smart-glasses'
+      fullPath: '/smart-glasses'
+      preLoaderRoute: typeof SmartGlassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sunglasses': {
+      id: '/sunglasses'
+      path: '/sunglasses'
+      fullPath: '/sunglasses'
+      preLoaderRoute: typeof SunglassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wishlist': {
+      id: '/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof WishlistRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collections/': {
@@ -129,6 +298,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
+  ComputerGlassesRoute: ComputerGlassesRoute,
+  EyeglassesRoute: EyeglassesRoute,
+  SearchRoute: SearchRoute,
+  SmartGlassesRoute: SmartGlassesRoute,
+  SunglassesRoute: SunglassesRoute,
+  WishlistRoute: WishlistRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   ProductIdRoute: ProductIdRoute,
   CollectionsIndexRoute: CollectionsIndexRoute,
