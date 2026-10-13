@@ -6,7 +6,7 @@ export type CartItem = { id: string; color: string; size: string; qty: number };
 type Ctx = {
   cart: CartItem[];
   wishlist: string[];
-  addToCart: (id: string, color?: string, size?: string) => void;
+  addToCart: (id: string, color?: string, size?: string, qty?: number) => void;
   setQty: (i: number, qty: number) => void;
   removeItem: (i: number) => void;
   clearCart: () => void;
@@ -45,15 +45,16 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   useEffect(() => { if (ready) localStorage.setItem("aura-cart", JSON.stringify(cart)); }, [cart, ready]);
   useEffect(() => { if (ready) localStorage.setItem("aura-wish", JSON.stringify(wishlist)); }, [wishlist, ready]);
 
-  const addToCart = (id: string, color?: string, size?: string) => {
+  const addToCart = (id: string, color?: string, size?: string, qty: number = 1) => {
     const prod = getProduct(id);
     if (!prod) return;
     const c = color ?? prod.colors[0]?.name ?? "";
     const s = size ?? prod.size;
+    const addQty = Math.max(1, qty);
     setCart((prev) => {
       const i = prev.findIndex((x) => x.id === id && x.color === c && x.size === s);
-      if (i >= 0) return prev.map((x, j) => (j === i ? { ...x, qty: x.qty + 1 } : x));
-      return [...prev, { id, color: c, size: s, qty: 1 }];
+      if (i >= 0) return prev.map((x, j) => (j === i ? { ...x, qty: x.qty + addQty } : x));
+      return [...prev, { id, color: c, size: s, qty: addQty }];
     });
     setCartOpen(true);
   };

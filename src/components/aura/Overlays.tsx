@@ -31,7 +31,7 @@ function Drawer({ open, close, title, children, footer }: { open: boolean; close
               <h2 className="headline text-3xl text-navy">{title}</h2>
               <button onClick={close} aria-label="Close" className="grid size-10 place-items-center rounded-full hover:bg-pale"><X className="size-5" /></button>
             </div>
-            <div className="flex-1 overflow-y-auto px-6 py-5" data-lenis-prevent>{children}</div>
+            <div className="flex-1 overflow-y-auto px-6 py-5">{children}</div>
             {footer && <div className="border-t border-border px-6 py-5">{footer}</div>}
           </motion.aside>
         </>
@@ -211,7 +211,7 @@ export function SearchOverlay() {
   return (
     <AnimatePresence>
       {searchOpen && (
-        <motion.div role="dialog" aria-modal="true" aria-label="Search" className="fixed inset-0 z-[90] overflow-y-auto bg-background/95 backdrop-blur-xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }} data-lenis-prevent>
+        <motion.div role="dialog" aria-modal="true" aria-label="Search" className="fixed inset-0 z-[90] overflow-y-auto bg-background/95 backdrop-blur-xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
           <div className="mx-auto max-w-5xl px-5 pb-20 pt-8 md:pt-16">
             <div className="flex justify-end"><button onClick={close} aria-label="Close search" className="grid size-11 place-items-center rounded-full border border-border hover:border-primary"><X className="size-5" /></button></div>
             <motion.form initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, ease }} onSubmit={(e) => { e.preventDefault(); close(); nav({ to: "/search", search: { q } }); }} className="mt-8 flex items-center gap-4 border-b-2 border-navy pb-4 focus-within:border-primary">

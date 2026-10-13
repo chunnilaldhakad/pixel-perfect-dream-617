@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -17,7 +18,7 @@ const groups: { k: keyof Product | "price"; label: string; opts: string[] }[] = 
   { k: "size", label: "Size", opts: ["Small", "Medium", "Large"] },
   { k: "rating", label: "Rating", opts: ["4.5 & above", "4.0 & above"] },
 ];
-const sorts = ["Recommended", "Best Selling", "Newest", "Price: Low → High", "Price: High → Low"];
+const sorts = ["Recommended", "Popular", "Newest", "Price: Low → High", "Price: High → Low", "Highest Rated"];
 
 export function applyFilters(list: Product[], f: F) {
   return list.filter((p) => groups.every((g) => {
@@ -32,10 +33,11 @@ export function applyFilters(list: Product[], f: F) {
 
 export function sortProducts(list: Product[], s: string) {
   const l = [...list];
-  if (s === "Best Selling") l.sort((a, b) => b.reviews - a.reviews);
+  if (s === "Popular") l.sort((a, b) => b.reviews - a.reviews);
   if (s === "Newest") l.sort((a, b) => b.createdAt - a.createdAt);
   if (s.includes("Low →")) l.sort((a, b) => a.price - b.price);
   if (s.includes("High →")) l.sort((a, b) => b.price - a.price);
+  if (s === "Highest Rated") l.sort((a, b) => b.rating - a.rating);
   return l;
 }
 
@@ -77,8 +79,18 @@ export function Listing({ category, initialQ }: { category: Category; initialQ?:
 
   return (
     <>
-      <PageHero eyebrow={`${base.length * 6 + 4} Products`} title={meta.title} sub={meta.desc} />
-      <div className="sticky top-[76px] z-30 border-y border-border bg-background/90 px-5 py-3 backdrop-blur md:px-10">
+      <section className="bg-hero relative overflow-hidden px-5 pb-10 pt-32 md:px-10 md:pb-14 md:pt-40">
+        <div className="mx-auto max-w-[1400px]">
+          <nav aria-label="Breadcrumb" className="label-tech mb-4 text-muted-foreground">
+            <Link to="/" className="hover:text-primary transition">Home</Link> /{" "}
+            <span className="text-navy">{meta.title}</span>
+          </nav>
+          <p className="label-tech text-primary">{base.length} Handcrafted Models</p>
+          <h1 className="headline mt-3 text-5xl text-navy md:text-7xl">{meta.title}</h1>
+          <p className="mt-4 max-w-xl text-muted-foreground leading-relaxed">{meta.desc}</p>
+        </div>
+      </section>
+      <div className="sticky top-[72px] z-30 border-y border-border bg-background/95 px-5 py-3 backdrop-blur md:px-10">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3">
           <button onClick={() => setOpen(true)} className="label-tech flex items-center gap-2 lg:hidden"><SlidersHorizontal className="size-4" /> Filter {active > 0 && `(${active})`}</button>
           <p className="label-tech hidden text-muted-foreground lg:block">Showing {items.length} frames</p>
@@ -101,7 +113,7 @@ export function Listing({ category, initialQ }: { category: Category; initialQ?:
       </section>
       <AnimatePresence>
         {open && (
-          <motion.div role="dialog" aria-modal="true" aria-label="Filters" initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} className="fixed inset-0 z-[75] flex flex-col bg-background" data-lenis-prevent>
+          <motion.div role="dialog" aria-modal="true" aria-label="Filters" initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }} className="fixed inset-0 z-[75] flex flex-col bg-background">
             <div className="flex items-center justify-between border-b border-border px-5 py-4"><p className="headline text-3xl">Filters</p><button onClick={() => setOpen(false)} aria-label="Close"><X /></button></div>
             <div className="flex-1 overflow-y-auto p-5"><FilterPanel f={f} set={setF} /></div>
             <div className="flex gap-3 border-t border-border p-4">

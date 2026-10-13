@@ -10,18 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ComputerGlassesRouteImport } from './routes/computer-glasses'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EyeTestRouteImport } from './routes/eye-test'
 import { Route as EyeglassesRouteImport } from './routes/eyeglasses'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ReturnsRouteImport } from './routes/returns'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as SmartGlassesRouteImport } from './routes/smart-glasses'
 import { Route as StoresRouteImport } from './routes/stores'
 import { Route as SunglassesRouteImport } from './routes/sunglasses'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrackOrderRouteImport } from './routes/track-order'
-import { Route as VirtualTryOnRouteImport } from './routes/virtual-try-on'
+import { Route as WarrantyRouteImport } from './routes/warranty'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
@@ -30,6 +37,11 @@ import { Route as ProductIdRouteImport } from './routes/product.$id'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountRoute = AccountRouteImport.update({
@@ -52,6 +64,11 @@ const ComputerGlassesRoute = ComputerGlassesRouteImport.update({
   path: '/computer-glasses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EyeTestRoute = EyeTestRouteImport.update({
   id: '/eye-test',
   path: '/eye-test',
@@ -62,9 +79,29 @@ const EyeglassesRoute = EyeglassesRouteImport.update({
   path: '/eyeglasses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnsRoute = ReturnsRouteImport.update({
+  id: '/returns',
+  path: '/returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SmartGlassesRoute = SmartGlassesRouteImport.update({
@@ -82,14 +119,19 @@ const SunglassesRoute = SunglassesRouteImport.update({
   path: '/sunglasses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrackOrderRoute = TrackOrderRouteImport.update({
   id: '/track-order',
   path: '/track-order',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VirtualTryOnRoute = VirtualTryOnRouteImport.update({
-  id: '/virtual-try-on',
-  path: '/virtual-try-on',
+const WarrantyRoute = WarrantyRouteImport.update({
+  id: '/warranty',
+  path: '/warranty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WishlistRoute = WishlistRouteImport.update({
@@ -115,18 +157,25 @@ const ProductIdRoute = ProductIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/computer-glasses': typeof ComputerGlassesRoute
+  '/contact': typeof ContactRoute
   '/eye-test': typeof EyeTestRoute
   '/eyeglasses': typeof EyeglassesRoute
+  '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
+  '/returns': typeof ReturnsRoute
   '/search': typeof SearchRoute
+  '/shipping': typeof ShippingRoute
   '/smart-glasses': typeof SmartGlassesRoute
   '/stores': typeof StoresRoute
   '/sunglasses': typeof SunglassesRoute
+  '/terms': typeof TermsRoute
   '/track-order': typeof TrackOrderRoute
-  '/virtual-try-on': typeof VirtualTryOnRoute
+  '/warranty': typeof WarrantyRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
@@ -134,18 +183,25 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/computer-glasses': typeof ComputerGlassesRoute
+  '/contact': typeof ContactRoute
   '/eye-test': typeof EyeTestRoute
   '/eyeglasses': typeof EyeglassesRoute
+  '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
+  '/returns': typeof ReturnsRoute
   '/search': typeof SearchRoute
+  '/shipping': typeof ShippingRoute
   '/smart-glasses': typeof SmartGlassesRoute
   '/stores': typeof StoresRoute
   '/sunglasses': typeof SunglassesRoute
+  '/terms': typeof TermsRoute
   '/track-order': typeof TrackOrderRoute
-  '/virtual-try-on': typeof VirtualTryOnRoute
+  '/warranty': typeof WarrantyRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
@@ -154,18 +210,25 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/computer-glasses': typeof ComputerGlassesRoute
+  '/contact': typeof ContactRoute
   '/eye-test': typeof EyeTestRoute
   '/eyeglasses': typeof EyeglassesRoute
+  '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
+  '/returns': typeof ReturnsRoute
   '/search': typeof SearchRoute
+  '/shipping': typeof ShippingRoute
   '/smart-glasses': typeof SmartGlassesRoute
   '/stores': typeof StoresRoute
   '/sunglasses': typeof SunglassesRoute
+  '/terms': typeof TermsRoute
   '/track-order': typeof TrackOrderRoute
-  '/virtual-try-on': typeof VirtualTryOnRoute
+  '/warranty': typeof WarrantyRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
@@ -175,18 +238,25 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/account'
     | '/cart'
     | '/checkout'
     | '/computer-glasses'
+    | '/contact'
     | '/eye-test'
     | '/eyeglasses'
+    | '/faq'
+    | '/privacy'
+    | '/returns'
     | '/search'
+    | '/shipping'
     | '/smart-glasses'
     | '/stores'
     | '/sunglasses'
+    | '/terms'
     | '/track-order'
-    | '/virtual-try-on'
+    | '/warranty'
     | '/wishlist'
     | '/collections/$slug'
     | '/product/$id'
@@ -194,18 +264,25 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/account'
     | '/cart'
     | '/checkout'
     | '/computer-glasses'
+    | '/contact'
     | '/eye-test'
     | '/eyeglasses'
+    | '/faq'
+    | '/privacy'
+    | '/returns'
     | '/search'
+    | '/shipping'
     | '/smart-glasses'
     | '/stores'
     | '/sunglasses'
+    | '/terms'
     | '/track-order'
-    | '/virtual-try-on'
+    | '/warranty'
     | '/wishlist'
     | '/collections/$slug'
     | '/product/$id'
@@ -213,18 +290,25 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/account'
     | '/cart'
     | '/checkout'
     | '/computer-glasses'
+    | '/contact'
     | '/eye-test'
     | '/eyeglasses'
+    | '/faq'
+    | '/privacy'
+    | '/returns'
     | '/search'
+    | '/shipping'
     | '/smart-glasses'
     | '/stores'
     | '/sunglasses'
+    | '/terms'
     | '/track-order'
-    | '/virtual-try-on'
+    | '/warranty'
     | '/wishlist'
     | '/collections/$slug'
     | '/product/$id'
@@ -233,18 +317,25 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   ComputerGlassesRoute: typeof ComputerGlassesRoute
+  ContactRoute: typeof ContactRoute
   EyeTestRoute: typeof EyeTestRoute
   EyeglassesRoute: typeof EyeglassesRoute
+  FaqRoute: typeof FaqRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ReturnsRoute: typeof ReturnsRoute
   SearchRoute: typeof SearchRoute
+  ShippingRoute: typeof ShippingRoute
   SmartGlassesRoute: typeof SmartGlassesRoute
   StoresRoute: typeof StoresRoute
   SunglassesRoute: typeof SunglassesRoute
+  TermsRoute: typeof TermsRoute
   TrackOrderRoute: typeof TrackOrderRoute
-  VirtualTryOnRoute: typeof VirtualTryOnRoute
+  WarrantyRoute: typeof WarrantyRoute
   WishlistRoute: typeof WishlistRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   ProductIdRoute: typeof ProductIdRoute
@@ -258,6 +349,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account': {
@@ -288,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComputerGlassesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/eye-test': {
       id: '/eye-test'
       path: '/eye-test'
@@ -302,11 +407,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EyeglassesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/returns': {
+      id: '/returns'
+      path: '/returns'
+      fullPath: '/returns'
+      preLoaderRoute: typeof ReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/smart-glasses': {
@@ -330,6 +463,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SunglassesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/track-order': {
       id: '/track-order'
       path: '/track-order'
@@ -337,11 +477,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrackOrderRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/virtual-try-on': {
-      id: '/virtual-try-on'
-      path: '/virtual-try-on'
-      fullPath: '/virtual-try-on'
-      preLoaderRoute: typeof VirtualTryOnRouteImport
+    '/warranty': {
+      id: '/warranty'
+      path: '/warranty'
+      fullPath: '/warranty'
+      preLoaderRoute: typeof WarrantyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wishlist': {
@@ -377,18 +517,25 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   ComputerGlassesRoute: ComputerGlassesRoute,
+  ContactRoute: ContactRoute,
   EyeTestRoute: EyeTestRoute,
   EyeglassesRoute: EyeglassesRoute,
+  FaqRoute: FaqRoute,
+  PrivacyRoute: PrivacyRoute,
+  ReturnsRoute: ReturnsRoute,
   SearchRoute: SearchRoute,
+  ShippingRoute: ShippingRoute,
   SmartGlassesRoute: SmartGlassesRoute,
   StoresRoute: StoresRoute,
   SunglassesRoute: SunglassesRoute,
+  TermsRoute: TermsRoute,
   TrackOrderRoute: TrackOrderRoute,
-  VirtualTryOnRoute: VirtualTryOnRoute,
+  WarrantyRoute: WarrantyRoute,
   WishlistRoute: WishlistRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   ProductIdRoute: ProductIdRoute,

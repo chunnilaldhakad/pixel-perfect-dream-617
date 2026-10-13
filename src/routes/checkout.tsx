@@ -51,11 +51,31 @@ function Checkout() {
     setPaying(true);
     setTimeout(() => {
       const d = new Date(Date.now() + (delivery === "Express" ? 2 : 5) * 864e5);
-      setOrder({ id: "AV" + Math.floor(100000 + Math.random() * 900000), date: d.toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long" }), total });
+      const newOrderId = "AV" + Math.floor(100000 + Math.random() * 900000);
+      const deliveryDateStr = d.toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long" });
+      const placedOrder = {
+        id: newOrderId,
+        date: deliveryDateStr,
+        placedOn: new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }),
+        total,
+        status: "Confirmed",
+        stage: 1,
+        items: cart.map((c) => c.id),
+        address: a,
+        delivery,
+        payMethod: pay,
+      };
+
+      try {
+        const existing = JSON.parse(localStorage.getItem("aura-orders") || "[]");
+        localStorage.setItem("aura-orders", JSON.stringify([placedOrder, ...existing]));
+      } catch {}
+
+      setOrder({ id: newOrderId, date: deliveryDateStr, total });
       clearCart();
       setPaying(false);
       setStep(3);
-    }, 1600);
+    }, 1400);
   };
 
   if (!cart.length && !order) {
@@ -104,7 +124,7 @@ function Checkout() {
                   <h2 className="headline mt-6 text-5xl text-navy">Order confirmed.</h2>
                   <p className="label-tech mt-6 text-muted-foreground">Order ID</p><p className="font-mono text-xl">{order.id}</p>
                   <p className="label-tech mt-4 text-muted-foreground">Estimated delivery</p><p className="font-display text-2xl">{order.date}</p>
-                  <div className="mt-8 flex justify-center gap-3"><Link to="/" className={btnClass("primary")}>Continue shopping</Link><Link to="/track-order" className={btnClass("glass")}>Track order</Link></div>
+                  <div className="mt-8 flex justify-center gap-3"><Link to="/" className={btnClass("primary")}>Continue shopping</Link><Link to="/track-order" search={{ id: order.id }} className={btnClass("glass")}>Track order</Link></div>
                 </div>
               )}
             </motion.div>

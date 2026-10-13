@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { Search, Heart, User, ShoppingBag, Menu, X, ArrowUpRight, Home, Grid2x2, ScanFace } from "lucide-react";
+import { Search, Heart, User, ShoppingBag, Menu, X, ArrowUpRight, Home, Grid2x2, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useStore } from "@/lib/store";
 import { IMG } from "@/lib/data";
@@ -23,9 +23,9 @@ const nav: { label: string; to: string; mega?: NavKey }[] = [
   { label: "Collections", to: "/collections", mega: "collections" },
 ];
 const more = [
-  { label: "Virtual Try-On", to: "/virtual-try-on" },
   { label: "Eye Test", to: "/eye-test" },
   { label: "Stores", to: "/stores" },
+  { label: "About", to: "/about" },
 ];
 
 const megaCols = [
@@ -136,7 +136,18 @@ function IconBtn({ children, label, onClick, badge, className }: { children: Rea
 }
 
 function MobileMenu({ close }: { close: () => void }) {
-  const links = [...nav, ...more, { label: "Track Order", to: "/track-order" }, { label: "Account", to: "/account" }];
+  const links = [
+    ...nav,
+    ...more,
+    { label: "About Us", to: "/about" },
+    { label: "Contact", to: "/contact" },
+    { label: "FAQs", to: "/faq" },
+    { label: "Shipping Policy", to: "/shipping" },
+    { label: "Returns & Exchanges", to: "/returns" },
+    { label: "1-Year Warranty", to: "/warranty" },
+    { label: "Track Order", to: "/track-order" },
+    { label: "Account", to: "/account" },
+  ];
   return (
     <motion.div initial={{ clipPath: "inset(0 0 100% 0)" }} animate={{ clipPath: "inset(0 0 0% 0)" }} exit={{ clipPath: "inset(0 0 100% 0)" }} transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }} className="bg-navy-grad fixed inset-0 z-[60] flex flex-col overflow-y-auto px-6 pb-10 pt-6" role="dialog" aria-modal="true" aria-label="Menu">
       <div className="flex items-center justify-between">
@@ -165,7 +176,7 @@ function MobileBottomNav() {
   const items = [
     { label: "Home", icon: Home, to: "/" },
     { label: "Shop", icon: Grid2x2, to: "/eyeglasses" },
-    { label: "Try-On", icon: ScanFace, to: "/virtual-try-on" },
+    { label: "Eye Test", icon: Eye, to: "/eye-test" },
   ];
   return (
     <nav aria-label="Mobile" className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-2xl border border-border glass p-1.5 shadow-soft md:hidden">

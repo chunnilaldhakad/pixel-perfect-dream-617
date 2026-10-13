@@ -18,9 +18,9 @@ export function Hero() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const ctx = gsap.context(() => {
-      gsap.from(".hero-line", { yPercent: 110, duration: 1.2, stagger: 0.12, ease: "expo.out", delay: 0.2 });
-      gsap.from(".hero-fade", { opacity: 0, y: 20, duration: 1, stagger: 0.08, ease: "power3.out", delay: 0.7 });
-      gsap.from(".hero-mask", { clipPath: "inset(100% 0 0 0)", duration: 1.4, ease: "expo.inOut", delay: 0.1 });
+      gsap.from(".hero-line", { yPercent: 100, duration: 0.75, stagger: 0.06, ease: "power3.out" });
+      gsap.from(".hero-fade", { opacity: 0, y: 14, duration: 0.55, stagger: 0.04, ease: "power2.out", delay: 0.15 });
+      gsap.from(".hero-mask", { clipPath: "inset(100% 0 0 0)", duration: 0.8, ease: "power3.out" });
     }, ref);
     return () => ctx.revert();
   }, []);
@@ -75,7 +75,7 @@ export function Hero() {
 }
 
 export function TrustStrip() {
-  const items = ["Precision Optics", "Free Shipping", "7-Day Returns", "Virtual Try-On", "1-Year Warranty"];
+  const items = ["Precision Optics", "Free Shipping", "7-Day Returns", "Atelier Craftsmanship", "1-Year Warranty"];
   return (
     <div className="overflow-hidden bg-navy py-5 text-navy-foreground" aria-label="Our promises">
       <div className="animate-marquee flex w-max gap-14">
@@ -192,8 +192,8 @@ export function FaceShapeFinder() {
                 ))}
               </dl>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/virtual-try-on" className={btnClass("primary")}>Try on now</Link>
-                <Link to="/product/$id" params={{ id: d.id }} className={btnClass("glass")}>Explore styles</Link>
+                <Link to="/product/$id" params={{ id: d.id }} className={btnClass("primary")}>View {d.name} Frame</Link>
+                <Link to="/collections" className={btnClass("glass")}>Explore Collection</Link>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -265,10 +265,10 @@ export function EditorialBand() {
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-2">
         <Reveal><img src={IMG.catComputer} alt="Woman wearing Aura computer glasses" loading="lazy" className="aspect-[4/5] w-full rounded-3xl object-cover" /></Reveal>
         <div>
-          <SectionHead light eyebrow="05 — Technology" title={<>See yourself <em className="text-cyan">differently.</em></>} sub="Try every frame from home with our virtual mirror, then take a 3-minute vision check designed by optometrists." />
+          <SectionHead light eyebrow="05 — Optical Precision" title={<>See the world <em className="text-cyan">differently.</em></>} sub="Engineered with Zeiss-certified blue light blocking and ultra-light Japanese titanium, backed by our 3-minute digital vision check." />
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link to="/virtual-try-on" className={btnClass("primary", "lg")}>Virtual try-on</Link>
-            <Link to="/eye-test" className={btnClass("outlineLight", "lg")}>Take eye test</Link>
+            <Link to="/eye-test" className={btnClass("primary", "lg")}>Take eye test</Link>
+            <Link to="/collections" className={btnClass("outlineLight", "lg")}>Explore collections</Link>
           </div>
           <p className="label-tech mt-12 text-navy-foreground/50">From {inr(1999)} · Free home delivery across India</p>
         </div>

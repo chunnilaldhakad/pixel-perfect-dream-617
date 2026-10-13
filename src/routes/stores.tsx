@@ -16,7 +16,7 @@ function StoreLocator() {
   const list = stores.filter((s) => !q || s.pins.some((p) => p.includes(q.toLowerCase().trim())) || s.name.toLowerCase().includes(q.toLowerCase()));
   return (
     <>
-      <PageHero eyebrow="Stores" title="Find a store near you." />
+      <PageHero eyebrow="Optical Studios" title="Find a store near you." sub="Experience frames in person at our flagship optical studios. Clearly labeled sample demonstration locations across major Indian cities." />
       <section className="px-5 pb-20 md:px-10">
         <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[420px_1fr]">
           <div>

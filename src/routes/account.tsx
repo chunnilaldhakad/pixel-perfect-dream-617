@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getProduct, inr, type Product } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { PageHero, btnClass } from "@/components/aura/ui";
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/account")({
 });
 
 const tabs = ["Profile", "Orders", "Wishlist", "Saved Addresses", "Preferences"] as const;
-const orders = [
+const defaultOrders = [
   { id: "AV482910", date: "28 Sep 2026", status: "Delivered", total: 5498, items: ["aura-vector", "aura-nova"] },
   { id: "AV510377", date: "9 Oct 2026", status: "Shipped", total: 3999, items: ["aura-edge"] },
 ];
@@ -21,6 +21,16 @@ const orders = [
 function Account() {
   const [t, setT] = useState<(typeof tabs)[number]>("Profile");
   const { wishlist } = useStore();
+  const [orders, setOrders] = useState(defaultOrders);
+
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem("aura-orders") || "[]");
+      if (Array.isArray(stored) && stored.length > 0) {
+        setOrders([...stored, ...defaultOrders]);
+      }
+    } catch {}
+  }, []);
   return (
     <>
       <PageHero eyebrow="Demo account" title="Hello, Ananya." />
