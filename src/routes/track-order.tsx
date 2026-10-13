@@ -6,7 +6,7 @@ import { Btn, PageHero } from "@/components/aura/ui";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/track-order")({
-  validateSearch: (s: Record<string, unknown>) => ({ id: typeof s.id === "string" ? s.id : undefined }),
+  validateSearch: (s: Record<string, unknown>): { id?: string } => (typeof s["id"] === "string" ? { id: s["id"] as string } : {}),
   head: () => ({ meta: [{ title: "Track Order — Aura Vision" }, { name: "description", content: "Track your Aura Vision order from confirmation to delivery." }, { property: "og:title", content: "Track Order — Aura Vision" }, { property: "og:description", content: "Track your order." }] }),
   component: Track,
 });

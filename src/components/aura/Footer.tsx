@@ -3,7 +3,7 @@ import { Instagram, Youtube, Twitter, Facebook, ArrowRight } from "lucide-react"
 import { useState } from "react";
 import { Logo } from "./Header";
 
-const cols = [
+const cols: { t: string; l: [string, string][] }[] = [
   { t: "Shop", l: [["Eyeglasses", "/eyeglasses"], ["Sunglasses", "/sunglasses"], ["Computer Glasses", "/computer-glasses"], ["Smart Glasses", "/smart-glasses"]] },
   { t: "Discover", l: [["Collections", "/collections"], ["Virtual Try-On", "/virtual-try-on"], ["Eye Test", "/eye-test"], ["Stores", "/stores"]] },
   { t: "Support", l: [["Contact", "/stores"], ["Track Order", "/track-order"], ["Shipping", "/track-order"], ["Returns", "/account"], ["Warranty", "/account"], ["About Us", "/collections"], ["Privacy Policy", "/account"], ["Terms & Conditions", "/account"], ["FAQs", "/stores"]] },

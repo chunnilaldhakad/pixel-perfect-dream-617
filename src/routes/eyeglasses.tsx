@@ -3,7 +3,7 @@ import { Listing } from "@/components/aura/Listing";
 import { categoryMeta } from "@/lib/data";
 
 export const Route = createFileRoute("/eyeglasses")({
-  validateSearch: (s: Record<string, unknown>) => ({ q: typeof s.q === "string" ? s.q : undefined }),
+  validateSearch: (s: Record<string, unknown>): { q?: string } => (typeof s["q"] === "string" ? { q: s["q"] as string } : {}),
   head: () => ({ meta: [
     { title: "Eyeglasses — Aura Vision" },
     { name: "description", content: categoryMeta["eyeglasses"].desc },
