@@ -29,14 +29,14 @@ export function Hero() {
     <section
       ref={ref}
       onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); mx.set((e.clientX / r.width - 0.5) * 18); my.set((e.clientY / r.height - 0.5) * 12); }}
-      className="bg-hero relative min-h-[100svh] overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pt-32"
+      className="bg-hero relative lg:min-h-[100svh] overflow-hidden px-5 pb-16 pt-28 md:px-10 md:pt-32"
     >
       <div className="animate-drift pointer-events-none absolute -right-40 top-10 size-[60vw] rounded-full bg-primary/10 blur-3xl" />
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_left,black,transparent_70%)]" />
       <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
         <div>
           <p className="hero-fade label-tech text-primary">Aura Vision <span className="mx-2 text-gold">—</span> Atelier Collection 2026</p>
-          <h1 className="headline mt-6 text-[19vw] text-navy sm:text-[8.5rem] xl:text-[10rem]">
+          <h1 className="headline mt-6 text-[clamp(3.5rem,17vw,5.5rem)] text-navy sm:text-[7rem] xl:text-[10rem]">
             <span className="block overflow-hidden"><span className="hero-line block">Frame</span></span>
             <span className="block overflow-hidden"><span className="hero-line block italic text-primary">your world.</span></span>
           </h1>
@@ -55,7 +55,7 @@ export function Hero() {
           <motion.div style={{ x: sx, y: sy }} className="hero-mask relative overflow-hidden rounded-[2rem] shadow-soft">
             <motion.img style={{ y: imgY }} src={IMG.hero} alt="Model wearing Aura titanium eyeglasses" width={1200} height={1504} className="aspect-[4/5] w-full scale-110 object-cover" />
           </motion.div>
-          <motion.div style={{ x: useTransform(sx, (v) => -v * 1.4), y: useTransform(sy, (v) => -v * 1.4) }} className="absolute -left-4 bottom-10 md:-left-14">
+          <motion.div style={{ x: useTransform(sx, (v) => -v * 1.4), y: useTransform(sy, (v) => -v * 1.4) }} className="absolute -bottom-6 left-3 hidden sm:block md:-left-14 md:bottom-10">
             <Link to="/product/$id" params={{ id: "aura-vector" }} className="hero-fade animate-floaty glass block w-60 rounded-2xl border border-ice p-4 shadow-soft">
               <div className="flex items-center gap-3">
                 <img src={IMG.pTitanium} alt="" className="size-14 rounded-xl object-cover" />

@@ -1,21 +1,11 @@
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
-import Lenis from "lenis";
 import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 
+// Native scrolling: fast and responsive. Only resets scroll position on route change.
 export function SmoothScroll() {
   const path = useRouterState({ select: (s) => s.location.pathname });
-  const lenisRef = useRef<Lenis | null>(null);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const lenis = new Lenis({ duration: 1.1, easing: (t) => 1 - Math.pow(1 - t, 4) });
-    lenisRef.current = lenis;
-    let id = 0;
-    const raf = (t: number) => { lenis.raf(t); id = requestAnimationFrame(raf); };
-    id = requestAnimationFrame(raf);
-    return () => { cancelAnimationFrame(id); lenis.destroy(); };
-  }, []);
-  useEffect(() => { lenisRef.current?.scrollTo(0, { immediate: true }); window.scrollTo(0, 0); }, [path]);
+  useEffect(() => { window.scrollTo(0, 0); }, [path]);
   return null;
 }
 
@@ -54,7 +44,7 @@ export function LoadingScreen() {
   const [show, setShow] = useState(true);
   useEffect(() => {
     if (sessionStorage.getItem("aura-loaded")) { setShow(false); return; }
-    const t = setTimeout(() => { setShow(false); sessionStorage.setItem("aura-loaded", "1"); }, 1500);
+    const t = setTimeout(() => { setShow(false); sessionStorage.setItem("aura-loaded", "1"); }, 900);
     return () => clearTimeout(t);
   }, []);
   return (
@@ -74,7 +64,7 @@ export function LoadingScreen() {
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <motion.div key={path} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+    <motion.div key={path} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}>
       {children}
     </motion.div>
   );
