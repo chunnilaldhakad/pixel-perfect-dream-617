@@ -49,7 +49,7 @@ function ProductGallery({ p }: { p: Product }) {
       </div>
       <div onMouseMove={onMove} onMouseLeave={() => setZoom(null)} className="relative aspect-square flex-1 overflow-hidden rounded-3xl bg-pale md:cursor-zoom-in">
         <AnimatePresence mode="wait">
-          <motion.img key={i} src={imgs[i]} alt={`${p.name} view ${i + 1}`} initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: zoom ? 1.8 : 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }} style={zoom ? { transformOrigin: `${zoom.x}% ${zoom.y}%` } : undefined} className="h-full w-full object-cover" />
+          <motion.img key={i} src={imgs[i]} alt={`${p.name} view ${i + 1}`} initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: zoom ? 1.8 : 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }} style={zoom ? { transformOrigin: `${zoom.x}% ${zoom.y}%` } : {}} className="h-full w-full object-cover" />
         </AnimatePresence>
       </div>
     </div>

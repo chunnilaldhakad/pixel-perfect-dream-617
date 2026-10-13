@@ -6,13 +6,13 @@ import { ProductGrid } from "@/components/aura/ProductCard";
 import { searchProducts } from "@/components/aura/Overlays";
 
 export const Route = createFileRoute("/search")({
-  validateSearch: (s: Record<string, unknown>) => ({ q: typeof s.q === "string" ? s.q : "" }),
+  validateSearch: (s: Record<string, unknown>): { q?: string } => (typeof s["q"] === "string" ? { q: s["q"] as string } : {}),
   head: () => ({ meta: [{ title: "Search — Aura Vision" }, { name: "description", content: "Search Aura Vision eyewear by shape, material and style." }, { property: "og:title", content: "Search — Aura Vision" }, { property: "og:description", content: "Search Aura Vision eyewear." }] }),
   component: SearchPage,
 });
 
 function SearchPage() {
-  const { q } = Route.useSearch();
+  const { q = "" } = Route.useSearch();
   const [v, setV] = useState(q);
   const nav = useNavigate();
   const items = searchProducts(q);

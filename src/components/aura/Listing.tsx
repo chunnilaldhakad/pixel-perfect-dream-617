@@ -62,7 +62,7 @@ function FilterPanel({ f, set }: { f: F; set: (f: F) => void }) {
   );
 }
 
-export function Listing({ category, initialQ }: { category: Category; initialQ?: string }) {
+export function Listing({ category, initialQ }: { category: Category; initialQ?: string | undefined }) {
   const meta = categoryMeta[category];
   const [f, setF] = useState<F>(() => {
     if (!initialQ) return {};

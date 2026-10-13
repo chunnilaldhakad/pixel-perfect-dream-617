@@ -7,7 +7,7 @@ import { Btn, PageHero, btnClass } from "@/components/aura/ui";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/virtual-try-on")({
-  validateSearch: (s: Record<string, unknown>) => ({ frame: typeof s.frame === "string" ? s.frame : undefined }),
+  validateSearch: (s: Record<string, unknown>): { frame?: string } => (typeof s["frame"] === "string" ? { frame: s["frame"] as string } : {}),
   head: () => ({ meta: [{ title: "Virtual Try-On — Aura Vision" }, { name: "description", content: "See yourself differently. Try Aura Vision frames on with your camera or a photo." }, { property: "og:title", content: "Virtual Try-On — Aura Vision" }, { property: "og:description", content: "Try frames on from home." }] }),
   component: TryOn,
 });
